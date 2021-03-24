@@ -1,0 +1,47 @@
+$sizes: (
+  xs: 375px,
+  sm: 425px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1440px,
+  xxl: 1920px,
+);
+
+@mixin media-up($size) {
+  @if map-has-key($sizes, $size) {
+    $value: map-get($sizes, $size);
+
+    @media only screen and (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+@mixin media-down($size) {
+  @if map-has-key($sizes, $size) {
+    $value: map-get($sizes, $size);
+
+    @media only screen and (max-width: $value - 1) {
+      @content;
+    }
+  }
+}
+
+@mixin container($maxWidth: 1140px) {
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 20px;
+
+  @include media-up("md") {
+    max-width: 720px;
+    padding: 70px 0;
+  }
+
+  @include media-up("lg") {
+    max-width: 960px;
+  }
+
+  @include media-up("xl") {
+    max-width: 1140px;
+  }
+}
