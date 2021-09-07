@@ -8,9 +8,17 @@
     <link rel="stylesheet" href="./styles/main.scss" />
   </head>
   <body>
+    <div id="scene" class="scene">
+      <div class="scene__box" data-invert-x data-depth="0.6" data-origin-x="0.2">Warstawa 1</div>
+      <div class="scene__box" data-depth="0.6">Warstawa 2</div>
+      <div class="scene__image-wrapper" data-depth="0.2">
+        <img class="scene__image" src="./assets/example.jpeg" alt="" data-depth="0.5" />
+      </div>
+    </div>
     <h1>Hello world</h1>
-    <img src="./assets/example.jpeg" alt="img" />
-
+    <!-- <img src="./assets/example.jpeg" alt="img" /> -->
+    <div id="timer"></div>
+    <div class="cursor"></div>
     <script src="./index.js"></script>
   </body>
 </html>
