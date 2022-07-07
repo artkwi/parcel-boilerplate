@@ -18,7 +18,11 @@ import { ClientObserver } from './js/ObserverPattern/ClientObserver';
 const cursor = document.querySelector('.cursor');
 
 document.addEventListener('mousemove', (e) => {
-  cursor.setAttribute('style', `left: ${e.pageX}px; top: ${e.pageY}px;`);
+  requestAnimationFrame(
+    () => {
+      cursor.setAttribute('style', `left: ${e.pageX}px; top: ${e.pageY}px;`);
+    }, 1000
+  )
 })
 
 // my parallax
