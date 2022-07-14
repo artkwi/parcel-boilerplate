@@ -73,3 +73,22 @@ const radioModel = new RadioModel();
 const clientObserver1 = new ClientObserver();
 radioModel.subscribe(clientObserver1);
 radioModel.notify();
+
+// Service Worker
+const worker = new Worker('./js/worker.js');
+const buttonWorkerEl = document.getElementById('button-worker');
+buttonWorkerEl.onclick = function() {
+  // it blocks user IU
+  // let sum = 0;
+  // for (let i = 0; i < 10000000000; i++) {
+  //   sum++;
+  // }
+
+  // it does not block user IU
+  // computing is moved to service worker - another thread
+  worker.postMessage('Test');
+}
+
+worker.onmessage = function(message) {
+  console.log(message);
+}
